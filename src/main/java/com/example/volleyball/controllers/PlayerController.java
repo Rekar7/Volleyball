@@ -1,16 +1,19 @@
 package com.example.volleyball.controllers;
 import com.example.volleyball.models.Player;
 import com.example.volleyball.services.PlayerService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 public class PlayerController {
+   private final PlayerService service;
 
     @GetMapping("/getAllPlayers/{id}")
     public List<Player> getAllPlayers(@PathVariable int id) {
-        PlayerService service = new PlayerService();
+
         return List.of(service.getPlayerById(id));
     }
 
