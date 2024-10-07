@@ -10,7 +10,20 @@ import org.springframework.stereotype.Service;
 public class PlayerService {
     private PlayerRepository playerRepository;
 
-    public Player getPlayerById(int id){
-        return new Player(id,"Jan","Nowak");
+    public Player getPlayerById(int id) {
+        return new Player(id, "Jan", "Nowak");
     }
+
+    public Player AddPlayer(Player player) {
+        return player;
+    }
+
+    public Player deletePlayer(int id) {
+        return new Player(id, "Usuniety", "Usuniety");
+    }
+
+    public Player updatePlayer(int id) {
+        return new Player(id, "Zupdatowany", "Zupdatowany");
+    }
+    ;
 }
