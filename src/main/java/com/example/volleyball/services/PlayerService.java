@@ -5,25 +5,43 @@ import com.example.volleyball.repositories.PlayerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class PlayerService {
-    private PlayerRepository playerRepository;
+    private final PlayerRepository playerRepository;
 
-    public Player getPlayerById(int id) {
-        return new Player(id, "Jan", "Nowak");
+    public Player getPlayerById(UUID id) {
+        //GET BY ID
+        playerRepository.getReferenceById(id);  //po id
+        return null;
+    }
+
+    public List<Player> getAllPlayers() {
+        //GETALL
+        return playerRepository.findAll(); //wszystkich playerów szuka
     }
 
     public Player AddPlayer(Player player) {
-        return player;
+        //POST
+        return playerRepository.save(new Player()); //Zapis nowego playera do bazy
+
     }
 
-    public Player deletePlayer(int id) {
-        return new Player(id, "Usuniety", "Usuniety");
+    public void deletePlayer(UUID id) {
+        //DELETE BY ID
+        playerRepository.deleteById(id); //usuń po id
     }
 
-    public Player updatePlayer(int id) {
-        return new Player(id, "Zupdatowany", "Zupdatowany");
+    public Player updatePlayer(UUID id, Player playerFromRequest) {
+        //PUT
+        Player player = playerRepository.getReferenceById(id);
+        player.setAge(playerFromRequest.getAge());
+        player.setName(playerFromRequest.getName());
+        return playerRepository.save(player);
     }
+
     ;
 }
