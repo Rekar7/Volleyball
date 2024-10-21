@@ -20,14 +20,17 @@ public class PlayerService {
         return null;
     }
 
-    public List<Player> getAllPlayers() {
+    //public List<Player> getAllPlayers() {
         //GETALL
-        return playerRepository.findAll(); //wszystkich playerów szuka
+        Player player = new Player(UUID.randomUUID(),"test","test2",12,false,12,"test3");
+
+        //return playerRepository.findAll(); //wszystkich playerów szuka
     }
 
     public Player AddPlayer(Player player) {
         //POST
-        return playerRepository.save(new Player()); //Zapis nowego playera do bazy
+        playerRepository.save(player); //Zapis nowego playera do bazy
+        return player;
 
     }
 

@@ -13,6 +13,9 @@ import java.util.UUID;
 public class PlayerController {
     private final PlayerService service;
 
+    //Dodać dwa modele  do transfery danych (dto) playerRequest i PlayerResponse
+
+
     @GetMapping("/getAllPlayers")
     public List<Player> getAllPlayers() {
         return service.getAllPlayers();
