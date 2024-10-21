@@ -19,7 +19,7 @@ public class PlayerController {
     }
 
     @GetMapping("/player/{playerId}")  //endpoint to /player
-    public Player getPlayer(@PathVariable UUID playerId) {
+    public Player getPlayerById(@PathVariable UUID playerId) {
         return service.getPlayerById(playerId);
     }
 
@@ -36,5 +36,15 @@ public class PlayerController {
     @PutMapping("player/edit/{playerId}")
     public Player updatePlayer(@PathVariable UUID playerId, @RequestBody Player player) {
         return service.updatePlayer(playerId, player);
+    }
+
+    @GetMapping("/players/{name}")
+    public List<String> getPlayerByName(@PathVariable String name) {
+        return service.getAllPlayersByName(name);
+    }
+//dla danej płci i pozycji zobaczymy wzrost
+    @GetMapping("/players/{gender}/{role}")
+    public List<Integer> getPlayerHeightByGenderAndRole(@PathVariable Boolean gender, @PathVariable String role) {
+        return service.getPlayersHeightByGenderAndRole(gender, role);
     }
 }

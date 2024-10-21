@@ -24,6 +24,7 @@ public class Player {
     @NonNull
     private String sureName;
     private int age;
+    private Boolean gender;     //0 - male, 1 - female
     private int height;
     private String role;
 

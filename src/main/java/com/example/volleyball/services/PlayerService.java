@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -43,5 +44,26 @@ public class PlayerService {
         return playerRepository.save(player);
     }
 
-    ;
+    //wyrażenia lmbda
+public List<String> getAllPlayersByName(String requestedName) {
+      return playerRepository.findAll()
+               .stream()
+               .filter(ourPlayer -> ourPlayer.getName().equals(requestedName))
+               .map(Player::getSureName)
+               .toList();
+
+}
+
+    public List<Integer> getPlayersHeightByGenderAndRole(Boolean requestedGedner, String requestedRole) {
+
+        return playerRepository.findAll()
+                .stream()
+                .filter(ourPlayer -> ourPlayer.getGender().equals(requestedGedner))
+                .filter(ourPlayer -> ourPlayer.getRole().equals(requestedRole))
+                .map(Player::getHeight)
+                .toList();
+
+
+    }
+
 }
