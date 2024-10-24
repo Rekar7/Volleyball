@@ -20,11 +20,10 @@ public class PlayerService {
         return null;
     }
 
-    //public List<Player> getAllPlayers() {
+    public List<Player> getAllPlayers() {
         //GETALL
-        Player player = new Player(UUID.randomUUID(),"test","test2",12,false,12,"test3");
 
-        //return playerRepository.findAll(); //wszystkich playerów szuka
+        return playerRepository.findAll(); //wszystkich playerów szuka
     }
 
     public Player AddPlayer(Player player) {
@@ -44,6 +43,7 @@ public class PlayerService {
         Player player = playerRepository.getReferenceById(id);
         player.setAge(playerFromRequest.getAge());
         player.setName(playerFromRequest.getName());
+        player.setRole(playerFromRequest.getRole());
         return playerRepository.save(player);
     }
 

@@ -25,7 +25,7 @@ public class Player {
     private String sureName;
     private int age;
     private Boolean gender;     //0 - male, 1 - female
-    private int height;
+    private Integer height;
     private String role;
 
 

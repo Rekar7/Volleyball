@@ -51,3 +51,15 @@ public class PlayerController {
         return service.getPlayersHeightByGenderAndRole(gender, role);
     }
 }
+
+/** JSON DO STWORZENIA PLAYERA
+    {
+        "name": "pawel",
+        "sureName": "lipski",
+        "age": 22,
+        "gender": false,
+        "height": 9999,
+        "role": "dlugi"
+        }
+
+ **/
